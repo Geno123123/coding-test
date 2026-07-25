@@ -1,3 +1,9 @@
+"""
+문제: 폰켓몬 (Level 1)
+링크: https://school.programmers.co.kr/learn/courses/30/lessons/1845
+분류: 해시
+"""
+
 def solution(nums):
     N=len(nums)//2;
     answer = 0

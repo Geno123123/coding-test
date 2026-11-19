@@ -1,28 +1,21 @@
 """
-문제: 소수 탐색(Level 2)
-링크: https://school.programmers.co.kr/learn/courses/30/lessons/42839
+문제: 카펫(Level 2)
+링크: https://school.programmers.co.kr/learn/courses/30/lessons/42842
 분류: Bruteforce
 """
 
-
-from itertools import permutations
-def isPrime(num):
-    if num<2:
-        return 0
-    for i in range(2,int(num**0.5)+1):
-        if num%i==0:
-            return 0
-    return 1
-
-def solution(numbers):
-    arr=[]
-    answer = set()
-    for number in numbers:
-        arr.append(number)
-    for i in range(1,len(arr)+1):
-        p=permutations(arr,i)
-        for x in p:
-            num=''.join(x)
-            if isPrime(int(num))==1:
-                answer.add(int(num))
-    return len(answer)
+def solution(brown, yellow):
+    #가능한 가로와 세로의 길이?
+    answer = []
+    #widht>=height
+    # brown+yellow=height*width
+    #(width-2)*(height-2)=yellow 일 때 가로와 세로의 길이를 구해서 넣어라.
+    #언제까지?
+    for i in range(3, 5000):
+        for j in range(3,i+1):
+            if (brown+yellow)==j*i and (i-2)*(j-2)==yellow:
+                answer.append(i)
+                answer.append(j)
+            if brown+yellow<j*i:
+                break
+    return answer

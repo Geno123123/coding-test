@@ -1,21 +1,29 @@
 """
-문제: 카펫(Level 2)
-링크: https://school.programmers.co.kr/learn/courses/30/lessons/42842
+문제: 모음사전(Level 2)
+링크: https://school.programmers.co.kr/learn/courses/30/lessons/84512
 분류: Bruteforce
 """
 
-def solution(brown, yellow):
-    #가능한 가로와 세로의 길이?
-    answer = []
-    #widht>=height
-    # brown+yellow=height*width
-    #(width-2)*(height-2)=yellow 일 때 가로와 세로의 길이를 구해서 넣어라.
-    #언제까지?
-    for i in range(3, 5000):
-        for j in range(3,i+1):
-            if (brown+yellow)==j*i and (i-2)*(j-2)==yellow:
-                answer.append(i)
-                answer.append(j)
-            if brown+yellow<j*i:
-                break
-    return answer
+def solution(word):
+    #단어의 길이는 A AA AAA AAAA AAAAA ->  A E I O U
+    #            1  2   3   4     5
+    #총 시간복잡도 5+25+125+625+3125.. 시간복잡도는 충분하다.
+    answer = 0
+    words=[]
+    vowel=['A','E','I','O','U']
+    word_S=""
+    
+    def dfs(word):
+        if len(word)==5:
+            return
+        for ch in vowel:
+            new_word=word+ch
+            words.append(new_word)
+            dfs(new_word)
+            
+    dfs(word_S)
+    # print(words.index(word)+1)
+            
+    return words.index(word)+1
+
+    
